@@ -23,27 +23,27 @@ public class Conta {
 	saldo = saldo + valor;
 }
 
-    void debitar (double valor) {
-            if(valor <= saldo){
-                            saldo = saldo - valor;
-                            return true;
-                    }
+    boolean debitar (double valor) {
+	if(valor <= saldo){
+			saldo = saldo - valor;
+			return true;
+		}
+	
+	else {
+		System.out.println("Saldo Insuficiente");
 
-            else {
-                    System.out.println("Saldo Insuficiente");
-
-            }
+	}
     }
 
-    // A transferência fazemos 2 operções: debito da minha conta pra creditar em outra, porém para isso ocorrer, é preciso verificar primeiro se há saldo na conta, e se nÃO TIVER SALDO, a operação de crédito NÃO DEVE OCORRER.
-    // Agora a transferência, usamos o método de débito já pronto.
+// A transferência fazemos 2 operções: debito da minha conta pra creditar em outra, porém para isso ocorrer, é preciso verificar primeiro se há saldo na conta, e se nÃO TIVER SALDO, a operação de crédito NÃO DEVE OCORRER.
+// Agora a transferência, usamos o método de débito já pronto.
 
     void transferir (double valor, Conta destino){
-            if debitar(valor) {
-                    destino.creditar(valor);
-
-            }
-            else {
-                    sout ("Transferência negada");
-            }
+	if (debitar(valor)) {
+		destino.creditar(valor);
+	
+	}
+	else {
+            System.out.println("Transferência negada");
+	}
     }
