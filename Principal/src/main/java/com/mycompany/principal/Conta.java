@@ -5,54 +5,56 @@
 package com.mycompany.principal;
 
 public class Conta { //criando a classe
+
     private int agencia, numero;
     private double saldo;
-    
+
     // Construtor vazio
     Conta() {
     }
-  
+
     // Construtor completo
-    Conta(int agencia, int numero, double saldo){
+    Conta(int agencia, int numero, double saldo) {
         this.agencia = agencia;
         this.numero = numero;
         this.saldo = saldo;
     }
-    
-    void creditar (double valor){
-	if(valor > 0){
+
+    void creditar(double valor) {
+        if (valor > 0) {
             saldo = saldo + valor;
 
-        }
-        else {
+        } else {
             System.out.println("Valor inválido.");
         }
-}
+    }
 
-    boolean debitar (double valor) {
-	if(valor > 0 && valor <= saldo){
+    boolean debitar(double valor) {
+        if (valor > 0 && valor <= saldo) {
             saldo = saldo - valor;
 
             return true;
-		}
-	
-	else {
-		System.out.println("Saldo Insuficiente");
+        } else {
+            System.out.println("Saldo Insuficiente");
             return false;
-	}
+        }
     }
 
 // A transferência fazemos 2 operções: debito da minha conta pra creditar em outra, porém para isso ocorrer, é preciso verificar primeiro se há saldo na conta, e se nÃO TIVER SALDO, a operação de crédito NÃO DEVE OCORRER.
 // Agora a transferência, usamos o método de débito já pronto.
-
-    void transferir (double valor, Conta destino){//criei uma variável do tipo Conta com o nome destino
-	if (debitar(valor)) {
+    void transferir(double valor, Conta destino) {//criei uma variável do tipo Conta com o nome destino
+        if (debitar(valor)) {
             destino.creditar(valor);
 
-	}
-	else {
+        } else {
             System.out.println("Transferência negada");
-	}
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Conta  \n" + "Número da conta: " + getNumero() + 
+                "\n" + "Saldo: R$ " + getSaldo();
     }
 
     public int getAgencia() {
